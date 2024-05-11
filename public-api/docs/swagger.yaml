@@ -1,0 +1,1381 @@
+definitions:
+  api.APIResponse:
+    properties:
+      content:
+        items:
+          type: integer
+        type: array
+      contentType:
+        type: string
+      status:
+        type: integer
+    required:
+    - content
+    - contentType
+    - status
+    type: object
+  api.clientUserUpdateRequest:
+    properties:
+      allergies:
+        items:
+          type: string
+        type: array
+      autoImportEnabled:
+        type: boolean
+      calories:
+        type: number
+      carbohydrates:
+        type: number
+      fats:
+        type: number
+      favoriteRecipeIDs:
+        items:
+          type: string
+        type: array
+      height:
+        type: integer
+      protein:
+        type: number
+      username:
+        type: string
+      weight:
+        type: integer
+    required:
+    - allergies
+    - autoImportEnabled
+    - calories
+    - carbohydrates
+    - fats
+    - favoriteRecipeIDs
+    - height
+    - protein
+    - username
+    - weight
+    type: object
+  api.dailyPlanStoreRequest:
+    properties:
+      breakfast:
+        $ref: '#/definitions/entity.MealPlan'
+      day:
+        type: string
+      dinner:
+        $ref: '#/definitions/entity.MealPlan'
+      lunch:
+        $ref: '#/definitions/entity.MealPlan'
+    required:
+    - day
+    type: object
+  api.generateCustomEntityRequest:
+    properties:
+      userInput:
+        type: string
+    required:
+    - userInput
+    type: object
+  api.generateDailyPlanRequest:
+    properties:
+      calories:
+        type: number
+      carbohydrates:
+        type: number
+      fats:
+        type: number
+      includeBreakfast:
+        type: boolean
+      includeDinner:
+        type: boolean
+      includeLunch:
+        type: boolean
+      protein:
+        type: number
+    required:
+    - calories
+    - carbohydrates
+    - fats
+    - includeBreakfast
+    - includeDinner
+    - includeLunch
+    - protein
+    type: object
+  api.generateDailyPlanResponse:
+    properties:
+      breakfast:
+        $ref: '#/definitions/api.generatedRecipe'
+      dinner:
+        $ref: '#/definitions/api.generatedRecipe'
+      lunch:
+        $ref: '#/definitions/api.generatedRecipe'
+    type: object
+  api.generateImageRequest:
+    properties:
+      recipeName:
+        type: string
+    required:
+    - recipeName
+    type: object
+  api.generateImageResponse:
+    properties:
+      imageUrl:
+        type: string
+    required:
+    - imageUrl
+    type: object
+  api.generateIntakeProgram:
+    properties:
+      calories:
+        type: number
+      carbohydrates:
+        type: number
+      fats:
+        type: number
+      protein:
+        type: number
+    required:
+    - calories
+    - carbohydrates
+    - fats
+    - protein
+    type: object
+  api.generateIntakeRequest:
+    properties:
+      currentWeight:
+        type: integer
+      desiredWeight:
+        type: integer
+      height:
+        type: integer
+    required:
+    - currentWeight
+    - desiredWeight
+    - height
+    type: object
+  api.generateIntakeResponse:
+    properties:
+      program:
+        $ref: '#/definitions/api.generateIntakeProgram'
+    required:
+    - program
+    type: object
+  api.generateMenuRequest:
+    properties:
+      event:
+        type: string
+      exclude:
+        items:
+          type: string
+        type: array
+      excludeDessert:
+        type: boolean
+      includeCocktails:
+        type: boolean
+      includeDrinks:
+        type: boolean
+      numberOfCourses:
+        type: integer
+      numberOfPeople:
+        type: integer
+    required:
+    - event
+    - exclude
+    - excludeDessert
+    - includeCocktails
+    - includeDrinks
+    - numberOfCourses
+    - numberOfPeople
+    type: object
+  api.generateMenuResponse:
+    properties:
+      menu:
+        items:
+          $ref: '#/definitions/api.generatedRecipe'
+        type: array
+    required:
+    - menu
+    type: object
+  api.generateRecipeRequest:
+    properties:
+      exclude:
+        items:
+          type: string
+        type: array
+      include:
+        items:
+          type: string
+        type: array
+    required:
+    - exclude
+    - include
+    type: object
+  api.generatedRecipe:
+    properties:
+      allTime:
+        type: string
+      cookingTime:
+        type: string
+      description:
+        type: string
+      imageUrl:
+        type: string
+      ingredients:
+        items:
+          type: string
+        type: array
+      instructions:
+        items:
+          type: string
+        type: array
+      name:
+        type: string
+      portions:
+        type: string
+      preparationTime:
+        type: string
+    required:
+    - allTime
+    - cookingTime
+    - description
+    - imageUrl
+    - ingredients
+    - instructions
+    - name
+    - portions
+    - preparationTime
+    type: object
+  api.menuStoreRequest:
+    properties:
+      event:
+        type: string
+      recipes:
+        items:
+          $ref: '#/definitions/entity.Recipe'
+        type: array
+    required:
+    - event
+    - recipes
+    type: object
+  api.messageHandlerPostBody:
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+    required:
+    - content
+    - title
+    type: object
+  api.recipeSearchResponse:
+    properties:
+      recipes:
+        items:
+          $ref: '#/definitions/entity.Recipe'
+        type: array
+      total:
+        type: integer
+    required:
+    - recipes
+    - total
+    type: object
+  api.recipeStoreRequest:
+    properties:
+      allTime:
+        type: string
+      cookingTime:
+        type: string
+      description:
+        type: string
+      imageUrl:
+        type: string
+      ingredients:
+        items:
+          type: string
+        type: array
+      instructions:
+        items:
+          type: string
+        type: array
+      name:
+        type: string
+      notes:
+        type: string
+      portions:
+        type: string
+      preparationTime:
+        type: string
+    required:
+    - allTime
+    - cookingTime
+    - description
+    - imageUrl
+    - ingredients
+    - instructions
+    - name
+    - notes
+    - portions
+    - preparationTime
+    type: object
+  entity.ClientUser:
+    properties:
+      Id:
+        type: string
+      allergies:
+        items:
+          type: string
+        type: array
+      autoImportEnabled:
+        description: 'NOTE: if auto imported is enabled we import new recipe files
+          automatically'
+        type: boolean
+      billing:
+        type: number
+      calories:
+        type: number
+      carbohydrates:
+        type: number
+      elasticIndex:
+        description: 'NOTE: index name in elastic search'
+        type: string
+      email:
+        type: string
+      fats:
+        type: number
+      favoriteRecipeIDs:
+        items:
+          type: string
+        type: array
+      height:
+        type: integer
+      importedRecipes:
+        description: 'NOTE: keeps track of imported files'
+        items:
+          type: string
+        type: array
+      protein:
+        type: number
+      subscription:
+        description: 'NOTE: FREE subscription has limited access'
+        type: string
+      username:
+        type: string
+      weight:
+        type: integer
+    required:
+    - Id
+    - allergies
+    - autoImportEnabled
+    - billing
+    - calories
+    - carbohydrates
+    - elasticIndex
+    - email
+    - fats
+    - favoriteRecipeIDs
+    - height
+    - importedRecipes
+    - protein
+    - subscription
+    - username
+    - weight
+    type: object
+  entity.DailyPlan:
+    properties:
+      Id:
+        type: string
+      breakfast:
+        $ref: '#/definitions/entity.MealPlan'
+      day:
+        type: string
+      dinner:
+        $ref: '#/definitions/entity.MealPlan'
+      lunch:
+        $ref: '#/definitions/entity.MealPlan'
+      userId:
+        type: string
+    required:
+    - Id
+    - day
+    - userId
+    type: object
+  entity.MealPlan:
+    properties:
+      calories:
+        type: integer
+      carbohydrates:
+        type: integer
+      fats:
+        type: integer
+      protein:
+        type: integer
+      recipes:
+        items:
+          $ref: '#/definitions/entity.Recipe'
+        type: array
+    required:
+    - calories
+    - carbohydrates
+    - fats
+    - protein
+    - recipes
+    type: object
+  entity.Menu:
+    properties:
+      Id:
+        type: string
+      event:
+        type: string
+      recipes:
+        items:
+          $ref: '#/definitions/entity.Recipe'
+        type: array
+      userId:
+        type: string
+    required:
+    - Id
+    - event
+    - recipes
+    - userId
+    type: object
+  entity.Recipe:
+    properties:
+      Id:
+        type: string
+      allTime:
+        type: string
+      cookingTime:
+        type: string
+      description:
+        type: string
+      imageUrl:
+        type: string
+      ingredients:
+        items:
+          type: string
+        type: array
+      instructions:
+        items:
+          type: string
+        type: array
+      name:
+        type: string
+      notes:
+        type: string
+      portions:
+        type: string
+      preparationTime:
+        type: string
+      tags:
+        items:
+          type: string
+        type: array
+    required:
+    - Id
+    - allTime
+    - cookingTime
+    - description
+    - imageUrl
+    - ingredients
+    - instructions
+    - name
+    - notes
+    - portions
+    - preparationTime
+    - tags
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Kitchen Master API
+  title: API
+  version: "1.0"
+paths:
+  /clientuser:
+    delete:
+      description: Delete all client user data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete all client user data
+      tags:
+      - ClientUser
+    get:
+      description: Get client user info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ClientUser'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get client user info
+      tags:
+      - ClientUser
+    put:
+      description: Update client user info
+      parameters:
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.clientUserUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Update client user info
+      tags:
+      - ClientUser
+  /dailyPlan:
+    get:
+      description: Get all daily plans for user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.DailyPlan'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get all daily plans for user
+      tags:
+      - Daily Plan
+    post:
+      description: Create a daily plan
+      parameters:
+      - description: createRecipes
+        in: query
+        name: createRecipes
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.dailyPlanStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a daily plan
+      tags:
+      - Daily Plan
+  /dailyPlan/{dailyPlanId}:
+    delete:
+      description: Delete a daily plan
+      parameters:
+      - description: dailyPlanId
+        in: path
+        name: dailyPlanId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a daily plan
+      tags:
+      - Daily Plan
+    get:
+      description: Get specific daily plan
+      parameters:
+      - description: dailyPlanId
+        in: path
+        name: dailyPlanId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.DailyPlan'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get specific daily plan
+      tags:
+      - Daily Plan
+    put:
+      description: Update a daily plan
+      parameters:
+      - description: dailyPlanId
+        in: path
+        name: dailyPlanId
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.dailyPlanStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a daily plan
+      tags:
+      - Daily Plan
+  /generate/custommenu:
+    post:
+      description: Generate a custom menu
+      parameters:
+      - description: generateImage
+        in: query
+        name: generateImage
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateCustomEntityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generateMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a custom menu
+      tags:
+      - Generate
+  /generate/customrecipe:
+    post:
+      description: Generate a custom recipe
+      parameters:
+      - description: generateImage
+        in: query
+        name: generateImage
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateCustomEntityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generatedRecipe'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a custom recipe
+      tags:
+      - Generate
+  /generate/dailyintake:
+    post:
+      description: Generate a daily intake
+      parameters:
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateIntakeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generateIntakeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a daily intake
+      tags:
+      - Generate
+  /generate/dailyplan:
+    post:
+      description: Generate a daily plan
+      parameters:
+      - description: generateImage
+        in: query
+        name: generateImage
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateDailyPlanRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generateDailyPlanResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a daily plan
+      tags:
+      - Generate
+  /generate/image:
+    post:
+      description: Generate a recipe image
+      parameters:
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateImageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generateImageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a recipe image
+      tags:
+      - Generate
+  /generate/menu:
+    post:
+      description: Generate a menu
+      parameters:
+      - description: generateImage
+        in: query
+        name: generateImage
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateMenuRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generateMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a menu
+      tags:
+      - Generate
+  /generate/recipe:
+    post:
+      description: Generate a recipe
+      parameters:
+      - description: generateImage
+        in: query
+        name: generateImage
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.generateRecipeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.generatedRecipe'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Generate a recipe
+      tags:
+      - Generate
+  /menu:
+    get:
+      description: Get all menus for user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Menu'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get all menus for user
+      tags:
+      - Menu
+    post:
+      description: Create a menu
+      parameters:
+      - description: createRecipes
+        in: query
+        name: createRecipes
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.menuStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a menu
+      tags:
+      - Menu
+  /menu/{menuId}:
+    delete:
+      description: Delete a menu
+      parameters:
+      - description: menuId
+        in: path
+        name: menuId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a menu
+      tags:
+      - Menu
+    get:
+      description: Get specific menu
+      parameters:
+      - description: menuId
+        in: path
+        name: menuId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Menu'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get specific menu
+      tags:
+      - Menu
+    put:
+      description: Update a menu
+      parameters:
+      - description: menuId
+        in: path
+        name: menuId
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.menuStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a menu
+      tags:
+      - Menu
+  /message:
+    post:
+      description: Create message
+      parameters:
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.messageHandlerPostBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Create message
+      tags:
+      - Message
+  /recipe:
+    get:
+      description: Search for recipes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.recipeSearchResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Search for recipes
+      tags:
+      - Recipes
+    post:
+      description: Create recipes
+      parameters:
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.recipeStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Create recipes
+      tags:
+      - Recipes
+  /recipe/{recipeId}:
+    delete:
+      description: Delete recipes
+      parameters:
+      - description: recipeId
+        in: path
+        name: recipeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete recipes
+      tags:
+      - Recipes
+    get:
+      description: Get specific recipe
+      parameters:
+      - description: recipeId
+        in: path
+        name: recipeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Recipe'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Get specific recipe
+      tags:
+      - Recipes
+    put:
+      description: Update recipes
+      parameters:
+      - description: recipeId
+        in: path
+        name: recipeId
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.recipeStoreRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: Update recipes
+      tags:
+      - Recipes
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

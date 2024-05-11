@@ -1,0 +1,2100 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Kitchen Master API",
+        "title": "API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/clientuser": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get client user info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ClientUser"
+                ],
+                "summary": "Get client user info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.ClientUser"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update client user info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ClientUser"
+                ],
+                "summary": "Update client user info",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.clientUserUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete all client user data",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ClientUser"
+                ],
+                "summary": "Delete all client user data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/dailyPlan": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all daily plans for user",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Daily Plan"
+                ],
+                "summary": "Get all daily plans for user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.DailyPlan"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a daily plan",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Daily Plan"
+                ],
+                "summary": "Create a daily plan",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "createRecipes",
+                        "name": "createRecipes",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.dailyPlanStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/dailyPlan/{dailyPlanId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get specific daily plan",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Daily Plan"
+                ],
+                "summary": "Get specific daily plan",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "dailyPlanId",
+                        "name": "dailyPlanId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.DailyPlan"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update a daily plan",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Daily Plan"
+                ],
+                "summary": "Update a daily plan",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "dailyPlanId",
+                        "name": "dailyPlanId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.dailyPlanStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete a daily plan",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Daily Plan"
+                ],
+                "summary": "Delete a daily plan",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "dailyPlanId",
+                        "name": "dailyPlanId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/custommenu": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a custom menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a custom menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "generateImage",
+                        "name": "generateImage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateCustomEntityRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generateMenuResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/customrecipe": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a custom recipe",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a custom recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "generateImage",
+                        "name": "generateImage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateCustomEntityRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generatedRecipe"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/dailyintake": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a daily intake",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a daily intake",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateIntakeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generateIntakeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/dailyplan": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a daily plan",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a daily plan",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "generateImage",
+                        "name": "generateImage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateDailyPlanRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generateDailyPlanResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/image": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a recipe image",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a recipe image",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateImageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generateImageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/menu": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "generateImage",
+                        "name": "generateImage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateMenuRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generateMenuResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/generate/recipe": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Generate a recipe",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Generate"
+                ],
+                "summary": "Generate a recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "generateImage",
+                        "name": "generateImage",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.generateRecipeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.generatedRecipe"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all menus for user",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Get all menus for user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.Menu"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Create a menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "createRecipes",
+                        "name": "createRecipes",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.menuStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/{menuId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get specific menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Get specific menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "menuId",
+                        "name": "menuId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Menu"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update a menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Update a menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "menuId",
+                        "name": "menuId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.menuStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete a menu",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Delete a menu",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "menuId",
+                        "name": "menuId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/message": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create message",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Create message",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.messageHandlerPostBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/recipe": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Search for recipes",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Search for recipes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.recipeSearchResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create recipes",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Create recipes",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.recipeStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/recipe/{recipeId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get specific recipe",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Get specific recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "recipeId",
+                        "name": "recipeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Recipe"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update recipes",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Update recipes",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "recipeId",
+                        "name": "recipeId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.recipeStoreRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete recipes",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Delete recipes",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "recipeId",
+                        "name": "recipeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.APIResponse": {
+            "type": "object",
+            "required": [
+                "content",
+                "contentType",
+                "status"
+            ],
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.clientUserUpdateRequest": {
+            "type": "object",
+            "required": [
+                "allergies",
+                "autoImportEnabled",
+                "calories",
+                "carbohydrates",
+                "fats",
+                "favoriteRecipeIDs",
+                "height",
+                "protein",
+                "username",
+                "weight"
+            ],
+            "properties": {
+                "allergies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "autoImportEnabled": {
+                    "type": "boolean"
+                },
+                "calories": {
+                    "type": "number"
+                },
+                "carbohydrates": {
+                    "type": "number"
+                },
+                "fats": {
+                    "type": "number"
+                },
+                "favoriteRecipeIDs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "protein": {
+                    "type": "number"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.dailyPlanStoreRequest": {
+            "type": "object",
+            "required": [
+                "day"
+            ],
+            "properties": {
+                "breakfast": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                },
+                "day": {
+                    "type": "string"
+                },
+                "dinner": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                },
+                "lunch": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                }
+            }
+        },
+        "api.generateCustomEntityRequest": {
+            "type": "object",
+            "required": [
+                "userInput"
+            ],
+            "properties": {
+                "userInput": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.generateDailyPlanRequest": {
+            "type": "object",
+            "required": [
+                "calories",
+                "carbohydrates",
+                "fats",
+                "includeBreakfast",
+                "includeDinner",
+                "includeLunch",
+                "protein"
+            ],
+            "properties": {
+                "calories": {
+                    "type": "number"
+                },
+                "carbohydrates": {
+                    "type": "number"
+                },
+                "fats": {
+                    "type": "number"
+                },
+                "includeBreakfast": {
+                    "type": "boolean"
+                },
+                "includeDinner": {
+                    "type": "boolean"
+                },
+                "includeLunch": {
+                    "type": "boolean"
+                },
+                "protein": {
+                    "type": "number"
+                }
+            }
+        },
+        "api.generateDailyPlanResponse": {
+            "type": "object",
+            "properties": {
+                "breakfast": {
+                    "$ref": "#/definitions/api.generatedRecipe"
+                },
+                "dinner": {
+                    "$ref": "#/definitions/api.generatedRecipe"
+                },
+                "lunch": {
+                    "$ref": "#/definitions/api.generatedRecipe"
+                }
+            }
+        },
+        "api.generateImageRequest": {
+            "type": "object",
+            "required": [
+                "recipeName"
+            ],
+            "properties": {
+                "recipeName": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.generateImageResponse": {
+            "type": "object",
+            "required": [
+                "imageUrl"
+            ],
+            "properties": {
+                "imageUrl": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.generateIntakeProgram": {
+            "type": "object",
+            "required": [
+                "calories",
+                "carbohydrates",
+                "fats",
+                "protein"
+            ],
+            "properties": {
+                "calories": {
+                    "type": "number"
+                },
+                "carbohydrates": {
+                    "type": "number"
+                },
+                "fats": {
+                    "type": "number"
+                },
+                "protein": {
+                    "type": "number"
+                }
+            }
+        },
+        "api.generateIntakeRequest": {
+            "type": "object",
+            "required": [
+                "currentWeight",
+                "desiredWeight",
+                "height"
+            ],
+            "properties": {
+                "currentWeight": {
+                    "type": "integer"
+                },
+                "desiredWeight": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.generateIntakeResponse": {
+            "type": "object",
+            "required": [
+                "program"
+            ],
+            "properties": {
+                "program": {
+                    "$ref": "#/definitions/api.generateIntakeProgram"
+                }
+            }
+        },
+        "api.generateMenuRequest": {
+            "type": "object",
+            "required": [
+                "event",
+                "exclude",
+                "excludeDessert",
+                "includeCocktails",
+                "includeDrinks",
+                "numberOfCourses",
+                "numberOfPeople"
+            ],
+            "properties": {
+                "event": {
+                    "type": "string"
+                },
+                "exclude": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excludeDessert": {
+                    "type": "boolean"
+                },
+                "includeCocktails": {
+                    "type": "boolean"
+                },
+                "includeDrinks": {
+                    "type": "boolean"
+                },
+                "numberOfCourses": {
+                    "type": "integer"
+                },
+                "numberOfPeople": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.generateMenuResponse": {
+            "type": "object",
+            "required": [
+                "menu"
+            ],
+            "properties": {
+                "menu": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/api.generatedRecipe"
+                    }
+                }
+            }
+        },
+        "api.generateRecipeRequest": {
+            "type": "object",
+            "required": [
+                "exclude",
+                "include"
+            ],
+            "properties": {
+                "exclude": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "include": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "api.generatedRecipe": {
+            "type": "object",
+            "required": [
+                "allTime",
+                "cookingTime",
+                "description",
+                "imageUrl",
+                "ingredients",
+                "instructions",
+                "name",
+                "portions",
+                "preparationTime"
+            ],
+            "properties": {
+                "allTime": {
+                    "type": "string"
+                },
+                "cookingTime": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "ingredients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "instructions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "portions": {
+                    "type": "string"
+                },
+                "preparationTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.menuStoreRequest": {
+            "type": "object",
+            "required": [
+                "event",
+                "recipes"
+            ],
+            "properties": {
+                "event": {
+                    "type": "string"
+                },
+                "recipes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.Recipe"
+                    }
+                }
+            }
+        },
+        "api.messageHandlerPostBody": {
+            "type": "object",
+            "required": [
+                "content",
+                "title"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.recipeSearchResponse": {
+            "type": "object",
+            "required": [
+                "recipes",
+                "total"
+            ],
+            "properties": {
+                "recipes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.Recipe"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.recipeStoreRequest": {
+            "type": "object",
+            "required": [
+                "allTime",
+                "cookingTime",
+                "description",
+                "imageUrl",
+                "ingredients",
+                "instructions",
+                "name",
+                "notes",
+                "portions",
+                "preparationTime"
+            ],
+            "properties": {
+                "allTime": {
+                    "type": "string"
+                },
+                "cookingTime": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "ingredients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "instructions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "portions": {
+                    "type": "string"
+                },
+                "preparationTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.ClientUser": {
+            "type": "object",
+            "required": [
+                "Id",
+                "allergies",
+                "autoImportEnabled",
+                "billing",
+                "calories",
+                "carbohydrates",
+                "elasticIndex",
+                "email",
+                "fats",
+                "favoriteRecipeIDs",
+                "height",
+                "importedRecipes",
+                "protein",
+                "subscription",
+                "username",
+                "weight"
+            ],
+            "properties": {
+                "Id": {
+                    "type": "string"
+                },
+                "allergies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "autoImportEnabled": {
+                    "description": "NOTE: if auto imported is enabled we import new recipe files automatically",
+                    "type": "boolean"
+                },
+                "billing": {
+                    "type": "number"
+                },
+                "calories": {
+                    "type": "number"
+                },
+                "carbohydrates": {
+                    "type": "number"
+                },
+                "elasticIndex": {
+                    "description": "NOTE: index name in elastic search",
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fats": {
+                    "type": "number"
+                },
+                "favoriteRecipeIDs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "importedRecipes": {
+                    "description": "NOTE: keeps track of imported files",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "protein": {
+                    "type": "number"
+                },
+                "subscription": {
+                    "description": "NOTE: FREE subscription has limited access",
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.DailyPlan": {
+            "type": "object",
+            "required": [
+                "Id",
+                "day",
+                "userId"
+            ],
+            "properties": {
+                "Id": {
+                    "type": "string"
+                },
+                "breakfast": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                },
+                "day": {
+                    "type": "string"
+                },
+                "dinner": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                },
+                "lunch": {
+                    "$ref": "#/definitions/entity.MealPlan"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.MealPlan": {
+            "type": "object",
+            "required": [
+                "calories",
+                "carbohydrates",
+                "fats",
+                "protein",
+                "recipes"
+            ],
+            "properties": {
+                "calories": {
+                    "type": "integer"
+                },
+                "carbohydrates": {
+                    "type": "integer"
+                },
+                "fats": {
+                    "type": "integer"
+                },
+                "protein": {
+                    "type": "integer"
+                },
+                "recipes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.Recipe"
+                    }
+                }
+            }
+        },
+        "entity.Menu": {
+            "type": "object",
+            "required": [
+                "Id",
+                "event",
+                "recipes",
+                "userId"
+            ],
+            "properties": {
+                "Id": {
+                    "type": "string"
+                },
+                "event": {
+                    "type": "string"
+                },
+                "recipes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.Recipe"
+                    }
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Recipe": {
+            "type": "object",
+            "required": [
+                "Id",
+                "allTime",
+                "cookingTime",
+                "description",
+                "imageUrl",
+                "ingredients",
+                "instructions",
+                "name",
+                "notes",
+                "portions",
+                "preparationTime",
+                "tags"
+            ],
+            "properties": {
+                "Id": {
+                    "type": "string"
+                },
+                "allTime": {
+                    "type": "string"
+                },
+                "cookingTime": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "ingredients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "instructions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "portions": {
+                    "type": "string"
+                },
+                "preparationTime": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
