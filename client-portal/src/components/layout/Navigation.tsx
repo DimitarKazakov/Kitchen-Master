@@ -114,11 +114,50 @@ export const Navigation = () => {
                   router.push(page.path);
                   handleCloseNavMenu();
                 }}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  mx: 1,
+                  color: 'white',
+                  display: 'block',
+                }}
               >
                 {page.name}
               </Button>
             ))}
+          </Box>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'flex-end' }}
+          >
+            <Button
+              key="profile"
+              onClick={() => {
+                router.push('/profile');
+                handleCloseNavMenu();
+              }}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+              }}
+            >
+              Profile
+            </Button>
+            <Button
+              key="contactus"
+              onClick={() => {
+                // TODO:
+                handleCloseNavMenu();
+              }}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+              }}
+            >
+              Contact Us
+            </Button>
           </Box>
         </Toolbar>
       </Container>
