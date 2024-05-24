@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
@@ -11,12 +13,14 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+
+import { firebaseAuth } from '../../config/firebase';
 
 const pages = [
   { name: 'Recipes', path: '/recipe' },
   { name: 'Menus', path: '/menu' },
   { name: 'Daily Programs', path: '/dailyProgram' },
+  { name: 'Calculator', path: '/calculator' },
 ];
 
 export const Navigation = () => {
@@ -144,9 +148,11 @@ export const Navigation = () => {
               Profile
             </Button>
             <Button
-              key="contactus"
+              key="logout"
               onClick={() => {
-                // TODO:
+                firebaseAuth.signOut().then(() => {
+                  router.push('/login');
+                });
                 handleCloseNavMenu();
               }}
               sx={{
@@ -156,7 +162,7 @@ export const Navigation = () => {
                 display: 'block',
               }}
             >
-              Contact Us
+              Logout
             </Button>
           </Box>
         </Toolbar>

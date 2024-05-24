@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
+
 import { Navigation } from './Navigation';
 
 type LayoutProps = {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 };
 export const Layout = (props: LayoutProps) => {
   const { children } = props;
