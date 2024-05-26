@@ -4,6 +4,7 @@ type DailyPlan struct {
 	ID     string `firestore:"Id" json:"Id"`
 	UserId string `firestore:"userId" json:"userId"`
 
+	Name      string    `firestore:"name" json:"name"`
 	Day       string    `firestore:"day" json:"day"`
 	Breakfast *MealPlan `firestore:"breakfast" json:"breakfast,omitempty" validate:"optional"`
 	Lunch     *MealPlan `firestore:"lunch" json:"lunch,omitempty" validate:"optional"`

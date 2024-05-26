@@ -18,6 +18,7 @@ type menuHandler struct {
 type menuStoreRequest struct {
 	Recipes []entity.Recipe `firestore:"recipes" json:"recipes"`
 	Event   string          `firestore:"event" json:"event"`
+	Name    string          `firestore:"name" json:"name"`
 }
 
 func RespondMenu(writer http.ResponseWriter, request *http.Request) {
@@ -81,10 +82,27 @@ func (h *menuHandler) handleBody(request *http.Request) (*menuStoreRequest, erro
 		return nil, err
 	}
 
+	images := map[string]string{}
+	for _, recipe := range body.Recipes {
+		images[recipe.Name] = recipe.ImageUrl
+	}
+
 	HTMLSanitizer(&body)
 
+	newRecipes := []entity.Recipe{}
+	for _, recipe := range body.Recipes {
+		recipe.ImageUrl = images[recipe.Name]
+		newRecipes = append(newRecipes, recipe)
+	}
+
+	body.Recipes = newRecipes
+
+	if body.Name == "" {
+		return nil, fmt.Errorf("name cannot be empty")
+	}
+
 	if len(body.Recipes) == 0 {
-		return nil, fmt.Errorf("cannot create meny with zero recipes")
+		return nil, fmt.Errorf("cannot create menu with zero recipes")
 	}
 
 	return &body, nil
@@ -192,6 +210,7 @@ func (h *menuHandler) handlePost(body menuStoreRequest, request *http.Request) A
 		UserId:  h.Session.UID,
 		Event:   body.Event,
 		Recipes: body.Recipes,
+		Name:    body.Name,
 	})
 
 	if err != nil {
@@ -221,6 +240,7 @@ func (h *menuHandler) handlePut(menuId string, body menuStoreRequest) APIRespons
 		UserId:  h.Session.UID,
 		Event:   body.Event,
 		Recipes: body.Recipes,
+		Name:    body.Name,
 	})
 
 	if err != nil {

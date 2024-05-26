@@ -21,7 +21,6 @@ import (
 	"github.com/google/uuid"
 )
 
-// TODO test:
 var (
 	url   = "https://recepti.gotvach.bg/"
 	mutex sync.Mutex

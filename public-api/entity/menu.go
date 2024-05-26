@@ -6,4 +6,5 @@ type Menu struct {
 
 	Recipes []Recipe `firestore:"recipes" json:"recipes"`
 	Event   string   `firestore:"event" json:"event"`
+	Name    string   `firestore:"name" json:"name"`
 }

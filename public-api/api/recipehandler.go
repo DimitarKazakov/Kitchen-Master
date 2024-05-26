@@ -96,7 +96,9 @@ func (h *recipeHandler) handleBody(request *http.Request) (*recipeStoreRequest, 
 		return nil, err
 	}
 
+	imageUrl := body.ImageUrl
 	HTMLSanitizer(&body)
+	body.ImageUrl = imageUrl
 
 	if body.Name == "" {
 		return nil, fmt.Errorf("name cannot be empty")

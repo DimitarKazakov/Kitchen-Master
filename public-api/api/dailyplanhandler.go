@@ -17,7 +17,8 @@ type dailyPlanHandler struct {
 }
 
 type dailyPlanStoreRequest struct {
-	Day string `firestore:"day" json:"day"`
+	Name string `firestore:"name" json:"name"`
+	Day  string `firestore:"day" json:"day"`
 
 	Breakfast *entity.MealPlan `firestore:"breakfast" json:"breakfast,omitempty" validate:"optional"`
 	Lunch     *entity.MealPlan `firestore:"lunch" json:"lunch,omitempty" validate:"optional"`
@@ -85,7 +86,60 @@ func (h *dailyPlanHandler) handleBody(request *http.Request) (*dailyPlanStoreReq
 		return nil, err
 	}
 
+	images := map[string]string{}
+	if body.Breakfast != nil {
+		for _, recipe := range body.Breakfast.Recipes {
+			images[recipe.Name] = recipe.ImageUrl
+		}
+	}
+
+	if body.Lunch != nil {
+		for _, recipe := range body.Lunch.Recipes {
+			images[recipe.Name] = recipe.ImageUrl
+		}
+	}
+
+	if body.Dinner != nil {
+		for _, recipe := range body.Dinner.Recipes {
+			images[recipe.Name] = recipe.ImageUrl
+		}
+	}
+
 	HTMLSanitizer(&body)
+
+	if body.Breakfast != nil {
+		newRecipes := []entity.Recipe{}
+		for _, recipe := range body.Breakfast.Recipes {
+			recipe.ImageUrl = images[recipe.Name]
+			newRecipes = append(newRecipes, recipe)
+		}
+
+		body.Breakfast.Recipes = newRecipes
+	}
+
+	if body.Lunch != nil {
+		newRecipes := []entity.Recipe{}
+		for _, recipe := range body.Lunch.Recipes {
+			recipe.ImageUrl = images[recipe.Name]
+			newRecipes = append(newRecipes, recipe)
+		}
+
+		body.Lunch.Recipes = newRecipes
+	}
+
+	if body.Dinner != nil {
+		newRecipes := []entity.Recipe{}
+		for _, recipe := range body.Dinner.Recipes {
+			recipe.ImageUrl = images[recipe.Name]
+			newRecipes = append(newRecipes, recipe)
+		}
+
+		body.Dinner.Recipes = newRecipes
+	}
+
+	if body.Name == "" {
+		return nil, fmt.Errorf("name cannot be empty")
+	}
 
 	if body.Day == "" {
 		return nil, fmt.Errorf("day cannot be empty")
@@ -213,6 +267,7 @@ func (h *dailyPlanHandler) handlePost(body dailyPlanStoreRequest, request *http.
 		ID:        uuid.New().String(),
 		UserId:    h.Session.UID,
 		Day:       body.Day,
+		Name:      body.Name,
 		Breakfast: body.Breakfast,
 		Lunch:     body.Lunch,
 		Dinner:    body.Dinner,
@@ -244,6 +299,7 @@ func (h *dailyPlanHandler) handlePut(dailyPlanId string, body dailyPlanStoreRequ
 		ID:        dailyPlanId,
 		UserId:    h.Session.UID,
 		Day:       body.Day,
+		Name:      body.Name,
 		Breakfast: body.Breakfast,
 		Lunch:     body.Lunch,
 		Dinner:    body.Dinner,

@@ -570,7 +570,12 @@ func (h *generateHandler) handleGenerateMenu(request *http.Request, body generat
 	generateImage := GetParameterFromRequest(request, "generateImage")
 	openAIRepo := repository.NewOpenAIRepository(h.Config.OpenAISecretKey, h.Config.OpenAIChatURL, h.Config.OpenAIImageURL)
 
-	prompt := fmt.Sprintf("Give me a %d-course menu for a %s for %d people with recipes in JSON format {\"menu\": {\"name\": string, \"description\": string, \"preparationTime\": string, \"cookingTime\": string, \"allTime\": string, \"portions\": string, \"ingredients\": string[], \"instructions\": string[]}[]}. Translate the values in Bulgarian.", body.NumberOfCourses, body.Event, body.NumberOfPeople)
+	translatedEvent, err := h.translateToEnglish(body.Event)
+	if err != nil {
+		return DefaultInternalServerError()
+	}
+
+	prompt := fmt.Sprintf("Give me a %d-course menu for a %s for %d people with recipes in JSON format {\"menu\": {\"name\": string, \"description\": string, \"preparationTime\": string, \"cookingTime\": string, \"allTime\": string, \"portions\": string, \"ingredients\": string[], \"instructions\": string[]}[]}. Translate the values in Bulgarian.", body.NumberOfCourses, translatedEvent, body.NumberOfPeople)
 	if body.IncludeDrinks {
 		prompt += "Include drinks as well."
 	}

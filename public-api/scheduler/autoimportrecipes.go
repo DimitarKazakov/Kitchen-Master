@@ -22,7 +22,6 @@ import (
 	"github.com/google/uuid"
 )
 
-// TODO test:
 func launchAutoImportRecipesScheduler(launchTime time.Time, additionalData string) {
 	ctx := context.Background()
 	firebase, err := api.ConnectFirebaseApp(ctx)
@@ -64,7 +63,7 @@ func launchAutoImportRecipesScheduler(launchTime time.Time, additionalData strin
 
 	recipeRepo := repository.NewRecipeRepository(*elasticSearchClient)
 
-	allFiles, err := ioutil.ReadDir("./")
+	allFiles, err := ioutil.ReadDir("./scheduler")
 	if err != nil {
 		return
 	}
@@ -73,7 +72,7 @@ func launchAutoImportRecipesScheduler(launchTime time.Time, additionalData strin
 	for _, file := range allFiles {
 		fileName := file.Name()
 		if !file.IsDir() && strings.HasPrefix(fileName, "recipes_") && strings.HasSuffix(fileName, ".json") {
-			jsonFiles = append(jsonFiles, "./"+fileName)
+			jsonFiles = append(jsonFiles, "./scheduler/"+fileName)
 		}
 	}
 
