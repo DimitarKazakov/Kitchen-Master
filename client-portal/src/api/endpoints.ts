@@ -18,4 +18,6 @@ export const Keys = {
   recipePage: (page: number, filter: string) => [Endpoints.recipe, { page, filter }] as const,
   recipeById: (recipeId: string) => [Endpoints.recipe, { recipeId }] as const,
   clientUser: [Endpoints.clientUser] as const,
+  allMenus: [Endpoints.menu] as const,
+  allDailyPlan: [Endpoints.dailyPlan] as const,
 };

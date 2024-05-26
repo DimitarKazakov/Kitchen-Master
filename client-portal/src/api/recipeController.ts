@@ -7,8 +7,12 @@ import { Endpoints, Keys } from './endpoints';
 import { Recipe, RecipeResponse, RecipeStoreRequest } from './entities';
 
 // ? Requests
-export const getRecipes = async (search: string, page: number): Promise<RecipeResponse> => {
-  const defaultPageSize = 12;
+export const getRecipes = async (
+  search: string,
+  page: number,
+  size?: number,
+): Promise<RecipeResponse> => {
+  const defaultPageSize = size ?? 12;
   const params = qs.stringify({
     search: search || undefined,
     limit: defaultPageSize,
@@ -42,10 +46,11 @@ export const deleteRecipe = async (recipeId: string): Promise<void> => {
 export const useGetRecipes = (
   search: string,
   page: number,
+  size?: number,
   options?: QueryOptions<RecipeResponse>,
 ) => {
   return useQueryRequest({
-    func: () => getRecipes(search, page),
+    func: () => getRecipes(search, page, size),
     key: Keys.recipePage(page, search),
     options,
   });

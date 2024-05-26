@@ -6,6 +6,7 @@ import { Box, Button, CircularProgress, Divider, TextField } from '@mui/material
 import { useGetClientUser } from '../../api/clientUserController';
 import { Recipe } from '../../api/entities';
 import { generateCustomRecipe, generateRecipe } from '../../api/generateController';
+import { GenerateQuickRecipe } from './GenerateQuickRecipe';
 import { IngredientsSelect } from './IngredientsSelect';
 
 type GenerateRecipeTabProps = {
@@ -51,7 +52,7 @@ export const GenerateRecipeTab = (props: GenerateRecipeTabProps) => {
       ) : (
         <>
           <Box
-            sx={{ marginTop: '50px', marginBottom: '50px' }}
+            sx={{ flexWrap: 'wrap', marginTop: '50px', marginBottom: '50px' }}
             display="flex"
             gap="30px"
             alignItems="center"
@@ -70,7 +71,7 @@ export const GenerateRecipeTab = (props: GenerateRecipeTabProps) => {
             />
 
             <Button
-              sx={{ padding: '10px', height: '50px' }}
+              sx={{ padding: '10px', height: '50px', width: '250px' }}
               disabled={
                 generateBtnLoading ||
                 clientUser?.subscription === 'FREE' ||
@@ -100,9 +101,99 @@ export const GenerateRecipeTab = (props: GenerateRecipeTabProps) => {
               Generate Recipe
             </Button>
           </Box>
+
           <Divider />
           <Box
-            sx={{ marginTop: '50px', marginBottom: '50px' }}
+            sx={{ flexWrap: 'wrap', marginTop: '50px', marginBottom: '50px' }}
+            display="flex"
+            gap="50px"
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            <GenerateQuickRecipe
+              label="Quick breakfast"
+              input="Give me a quick and delicious cooking breakfast recipe that i can make under 30 minutes with not much ingredients"
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Quick lunch"
+              input="Give me a quick and delicious lunch cooking recipe that i can make under 30 minutes with not much ingredients"
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Quick dinner"
+              input="Give me a quick and delicious dinner cooking recipe that i can make under 30 minutes with not much ingredients"
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Cocktail recipe"
+              input="Give me a good cocktail recipe i can drink and feel good."
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Refreshing Drink"
+              input="Give me a good beverage recipe i can drink and feel refreshed after it."
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Dessert"
+              input="Give me a cooking recipe for a good and quick to make dessert that doesn't have so much calories."
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Salad"
+              input="Give me a salad recipe that i can make quick and the salad should be healthy and light."
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+
+            <GenerateQuickRecipe
+              label="Fast Food"
+              input="Give me a cooking recipe suggestion for fast food that i can make or order quick like pizza, burger, pasta, mexican, indian or other suggestions."
+              generateBtnLoading={generateBtnLoading}
+              setGenerateBtnLoading={setGenerateBtnLoading}
+              setIsGenerated={setIsGenerated}
+              setSelectedRecipe={setSelectedRecipe}
+              setSelectedTab={setSelectedTab}
+            />
+          </Box>
+
+          <Divider />
+          <Box
+            sx={{ flexWrap: 'wrap', marginTop: '50px', marginBottom: '50px' }}
             display="flex"
             gap="50px"
             alignItems="center"
@@ -120,7 +211,7 @@ export const GenerateRecipeTab = (props: GenerateRecipeTabProps) => {
             />
 
             <Button
-              sx={{ padding: '10px', height: '50px' }}
+              sx={{ padding: '10px', height: '50px', width: '250px' }}
               disabled={
                 generateBtnLoading || clientUser?.subscription === 'FREE' || userInput.length === 0
               }

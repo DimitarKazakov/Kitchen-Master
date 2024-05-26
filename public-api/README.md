@@ -2,12 +2,8 @@
 
 ## TODOs
 
-- client portal setup and basic pages
+- use dalle 3
 - [OPTIONAL] give open ai recipe to tag it and clasify it by tags
-- [OPTIONAL] put only favourites recipes in context
-- backoffice endpoints for admin users ( swagger for ui )
-- calculator for different stuff -> ( FE ?)
-- test the scheduler tasks at least ones
 - remove all TODOs
 - [OPTIONAL] dalle 3 for images instead
 

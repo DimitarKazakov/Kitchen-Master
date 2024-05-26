@@ -19,8 +19,7 @@ import { firebaseAuth } from '../../config/firebase';
 const pages = [
   { name: 'Recipes', path: '/recipe' },
   { name: 'Menus', path: '/menu' },
-  { name: 'Daily Programs', path: '/dailyProgram' },
-  { name: 'Calculator', path: '/calculator' },
+  { name: 'Daily Plan', path: '/dailyPlan' },
 ];
 
 export const Navigation = () => {

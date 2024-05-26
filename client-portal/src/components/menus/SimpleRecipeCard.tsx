@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
+import { UseFormSetValue } from 'react-hook-form';
 
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import {
   Card,
@@ -15,19 +15,17 @@ import {
 
 import { Recipe } from '../../api/entities';
 
-type RecipeCardProps = {
+type SimpleRecipeCardProps = {
   item: Recipe;
-
+  id: string;
+  currentRecipes?: Recipe[];
+  setValue?: UseFormSetValue<any>;
   setOpenDetails: Dispatch<SetStateAction<boolean>>;
-  setOpenDelete: Dispatch<SetStateAction<boolean>>;
   setSelectedRecipe: Dispatch<SetStateAction<Recipe | undefined>>;
-  setSelectedTab: Dispatch<SetStateAction<number>>;
-  setIsGenerated: Dispatch<SetStateAction<boolean>>;
 };
 
-export const RecipeCard = (props: RecipeCardProps) => {
-  const { item, setOpenDetails, setSelectedRecipe, setOpenDelete, setIsGenerated, setSelectedTab } =
-    props;
+export const SimpleRecipeCard = (props: SimpleRecipeCardProps) => {
+  const { item, id, currentRecipes, setValue, setOpenDetails, setSelectedRecipe } = props;
 
   return (
     <Card sx={{ width: '400px' }}>
@@ -50,28 +48,22 @@ export const RecipeCard = (props: RecipeCardProps) => {
           <MenuBookIcon />
         </IconButton>
 
-        <IconButton
-          onClick={() => {
-            setSelectedRecipe(item);
-            setSelectedTab(1);
-            setIsGenerated(false);
-          }}
-          sx={{ color: '#0288d1' }}
-          aria-label="edit"
-        >
-          <EditIcon />
-        </IconButton>
-
-        <IconButton
-          onClick={() => {
-            setSelectedRecipe(item);
-            setOpenDelete(true);
-          }}
-          sx={{ color: 'red' }}
-          aria-label="delete"
-        >
-          <DeleteIcon />
-        </IconButton>
+        {currentRecipes && setValue && (
+          <IconButton
+            sx={{ color: 'red' }}
+            onClick={() => {
+              const recipes = currentRecipes.filter((x) => x.name !== item.name);
+              setValue(id, recipes, {
+                shouldValidate: true,
+                shouldDirty: true,
+                shouldTouch: true,
+              });
+            }}
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </IconButton>
+        )}
       </CardActions>
     </Card>
   );

@@ -4,61 +4,60 @@ import LockIcon from '@mui/icons-material/Lock';
 import { Tab, Tabs } from '@mui/material';
 
 import { useGetClientUser } from '../api/clientUserController';
-import { Recipe } from '../api/entities';
+import { DailyPlan } from '../api/entities';
+import { AddDailyPlanTab } from '../components/dailyplan/AddDailyPlanTab';
+import { DailyPlanTab } from '../components/dailyplan/DailyPlanTab';
+import { GenerateDailyPlanTab } from '../components/dailyplan/GenerateDailyPlanTab';
 import { Layout } from '../components/layout/Layout';
-import { AddRecipeTab } from '../components/recipes/addRecipeTab';
-import { GenerateRecipeTab } from '../components/recipes/generateRecipeTab';
-import { RecipeTab } from '../components/recipes/recipeTab';
 import { withAuth } from '../config/withauth';
 
-export const RecipePage = () => {
+export const DailyPlanPage = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
+  const [selectedDailyPlan, setSelectedDailyPlan] = useState<DailyPlan | undefined>();
   const [isGenerated, setIsGenerated] = useState<boolean>(false);
   const { data: clientUser } = useGetClientUser();
 
   return (
     <Layout>
       <Tabs value={selectedTab} onChange={(_, value) => setSelectedTab(value)} centered>
-        <Tab label="Recipes" value={0} />
+        <Tab label="Daily Plans" value={0} />
         <Tab
           onClick={() => {
-            setSelectedRecipe(undefined);
+            setSelectedDailyPlan(undefined);
             setIsGenerated(false);
           }}
-          label="Add Recipe"
+          label="Add Daily Plan"
           value={1}
         />
         <Tab
           iconPosition="start"
           icon={clientUser?.subscription === 'FREE' ? <LockIcon /> : undefined}
           disabled={clientUser?.subscription === 'FREE'}
-          label="Generate Recipe"
+          label="Generate Daily Plan"
           value={2}
         />
       </Tabs>
 
       <>
         {selectedTab === 0 && (
-          <RecipeTab
+          <DailyPlanTab
             setSelectedTab={setSelectedTab}
-            selectedRecipe={selectedRecipe}
-            setSelectedRecipe={setSelectedRecipe}
+            setSelectedDailyPlan={setSelectedDailyPlan}
             setIsGenerated={setIsGenerated}
           />
         )}
 
         {selectedTab === 1 && (
-          <AddRecipeTab
+          <AddDailyPlanTab
             isGenerated={isGenerated}
-            selectedRecipe={selectedRecipe}
+            selectedDailyPlan={selectedDailyPlan}
             setSelectedTab={setSelectedTab}
           />
         )}
 
         {selectedTab === 2 && (
-          <GenerateRecipeTab
-            setSelectedRecipe={setSelectedRecipe}
+          <GenerateDailyPlanTab
+            setSelectedDailyPlan={setSelectedDailyPlan}
             setIsGenerated={setIsGenerated}
             setSelectedTab={setSelectedTab}
           />
@@ -68,4 +67,4 @@ export const RecipePage = () => {
   );
 };
 
-export default withAuth(RecipePage);
+export default withAuth(DailyPlanPage);

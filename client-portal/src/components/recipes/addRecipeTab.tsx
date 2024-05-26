@@ -122,10 +122,9 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
         id="name"
         {...register('name', {
           required: true,
-          minLength: 5,
-          maxLength: 100,
         })}
       />
+
       <Box
         width="100%"
         display="flex"
@@ -186,7 +185,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
         id="description"
         {...register('description', {
           required: true,
-          minLength: 10,
         })}
       />
 
@@ -196,8 +194,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
           id="preparationTime"
           {...register('preparationTime', {
             required: true,
-            minLength: 1,
-            maxLength: 20,
           })}
         />
         <TextField
@@ -205,8 +201,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
           id="cookingTime"
           {...register('cookingTime', {
             required: true,
-            minLength: 1,
-            maxLength: 20,
           })}
         />
         <TextField
@@ -214,8 +208,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
           id="allTime"
           {...register('allTime', {
             required: true,
-            minLength: 1,
-            maxLength: 20,
           })}
         />
         <TextField
@@ -223,8 +215,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
           id="portions"
           {...register('portions', {
             required: true,
-            minLength: 1,
-            maxLength: 20,
           })}
         />
       </Box>
@@ -237,7 +227,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
         id="ingredients"
         {...register('ingredients', {
           required: true,
-          minLength: 10,
         })}
       />
 
@@ -249,7 +238,6 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
         id="instructions"
         {...register('instructions', {
           required: true,
-          minLength: 10,
         })}
       />
 
@@ -260,12 +248,13 @@ export const AddRecipeTab = (props: AddRecipeTabProps) => {
         label="Notes"
         id="notes"
         {...register('notes', {
-          maxLength: 500,
+          maxLength: 1500,
         })}
       />
 
-      <Box width="30%" display="flex" alignItems="center" justifyContent="space-between">
+      <Box width="60%" display="flex" alignItems="center" gap="20px" justifyContent="space-between">
         <Button
+          sx={{ width: '150px' }}
           variant="contained"
           onClick={() => {
             reset();
