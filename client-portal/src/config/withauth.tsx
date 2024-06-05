@@ -21,7 +21,7 @@ export const withAuth = <P extends object>(Component: NextPageWithLayout): React
     useEffect(() => {
       onAuthStateChanged(firebaseAuth, (user) => {
         if (!user) {
-          router.push('/login');
+          router.push('/');
         }
       });
     }, [router]);

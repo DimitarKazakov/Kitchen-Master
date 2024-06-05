@@ -25,7 +25,7 @@ type SignupForm = {
   lastName: string;
 };
 export default function Signup() {
-  const { register, control, formState } = useForm<SignupForm>({
+  const { register, control } = useForm<SignupForm>({
     mode: 'onChange',
   });
 
@@ -34,7 +34,7 @@ export default function Signup() {
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
-        router.push('/');
+        router.push('/profile');
       }
     });
   }, [router]);

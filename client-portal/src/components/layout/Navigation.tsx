@@ -150,7 +150,7 @@ export const Navigation = () => {
               key="logout"
               onClick={() => {
                 firebaseAuth.signOut().then(() => {
-                  router.push('/login');
+                  router.push('/');
                 });
                 handleCloseNavMenu();
               }}

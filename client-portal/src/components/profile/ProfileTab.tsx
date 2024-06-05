@@ -186,7 +186,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
               variant="contained"
               onClick={() => {
                 firebaseAuth.signOut().then(() => {
-                  router.push('/login');
+                  router.push('/');
                 });
               }}
             >

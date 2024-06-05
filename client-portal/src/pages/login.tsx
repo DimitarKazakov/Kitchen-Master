@@ -33,7 +33,7 @@ export default function Login() {
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
-        router.push('/');
+        router.push('/profile');
       }
     });
   }, [router]);

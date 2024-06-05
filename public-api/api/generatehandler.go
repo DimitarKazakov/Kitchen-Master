@@ -685,13 +685,13 @@ func (h *generateHandler) generateImage(recipeName string) string {
 	openAIRepo := repository.NewOpenAIRepository(h.Config.OpenAISecretKey, h.Config.OpenAIChatURL, h.Config.OpenAIImageURL)
 
 	imageRequest := entity.DalleRequest{
-		Model:  "dall-e-2",
-		Prompt: "Give me an image for this cooking recipe: " + recipeName,
+		Model:  "dall-e-3",
+		Prompt: "Give me an image for this cooking recipe: " + recipeName + ". Make the image a real photo.",
 		N:      1,
 		Size:   "1024x1024",
 	}
 
-	imageResponse, err := openAIRepo.CallDalleV2(imageRequest)
+	imageResponse, err := openAIRepo.CallDalleV3(imageRequest)
 	if err != nil {
 		return DEFAULT_IMAGE
 	}
