@@ -39,7 +39,8 @@ clientAxios.interceptors.response.use(
   async (error) => {
     const responseStatusCode = error.response ? error.response.status : null;
     if (responseStatusCode === 401 || responseStatusCode === 403) {
-      firebaseAuth.signOut();
+      // firebaseAuth.signOut();
+      return;
     }
 
     return Promise.reject(error);

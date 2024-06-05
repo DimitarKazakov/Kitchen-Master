@@ -16,16 +16,17 @@ import Typography from '@mui/material/Typography';
 const items = [
   {
     icon: <ViewQuiltRoundedIcon />,
-    title: 'Dashboard',
+    title: 'Personalized recipes solution',
     description:
-      'This item could provide a snapshot of the most important metrics or data points related to the product.',
+      'Each client receives his personal set of recipes that he can choose how to customize and has the freedom to do everything to them from writing notes to changing the ingredients and cooking steps.',
     imageLight: 'url("/static/images/templates/templates-images/dash-light.png")',
     imageDark: 'url("/static/images/templates/templates-images/dash-dark.png")',
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
-    title: 'Mobile integration',
-    description: 'This item could provide information about the mobile app version of the product.',
+    title: 'Smart assistant',
+    description:
+      'Our integrated solution with smart assistant makes it easy for you to make the right choice and have a diverse diet from rich amount of recipes and menus.',
     imageLight: 'url("/static/images/templates/templates-images/mobile-light.png")',
     imageDark: 'url("/static/images/templates/templates-images/mobile-dark.png")',
   },
@@ -33,7 +34,7 @@ const items = [
     icon: <DevicesRoundedIcon />,
     title: 'Available on all platforms',
     description:
-      'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
+      'Our product is available for all devices and platform. Its responsive design makes it easy for you to see your recipes from mobile on the go, from you laptop on the desk or even from your tablet in the kitchen..',
     imageLight: 'url("/static/images/templates/templates-images/devices-light.png")',
     imageDark: 'url("/static/images/templates/templates-images/devices-dark.png")',
   },
@@ -51,15 +52,16 @@ export default function Features() {
   return (
     <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <div>
             <Typography component="h2" variant="h4" color="text.primary">
               Product features
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 2, sm: 4 } }}>
-              Here you can see a brief overview of the key features of the product. Our
-              personalization is a key. Our innovative AI drive technology. And last but not least
-              our infrastructure to sync all your data with the latest recipes.
+              Our product offers a rich number of features to help your every day challenges in the
+              kitchen. The smart assistant can help you decide what to cook or he can suggest you
+              something new to try. Our personal solution gives you full control of your recipes and
+              makes it fully customizable.
             </Typography>
           </div>
           <Grid container item gap={1} sx={{ display: { xs: 'auto', sm: 'none' } }}>
@@ -204,30 +206,6 @@ export default function Features() {
               </Card>
             ))}
           </Stack>
-        </Grid>
-        <Grid item xs={12} md={6} sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}>
-          <Card
-            variant="outlined"
-            sx={{
-              height: '100%',
-              width: '100%',
-              display: { xs: 'none', sm: 'flex' },
-              pointerEvents: 'none',
-            }}
-          >
-            <Box
-              sx={{
-                m: 'auto',
-                width: 420,
-                height: 500,
-                backgroundSize: 'contain',
-                backgroundImage: (theme) =>
-                  theme.palette.mode === 'light'
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
-              }}
-            />
-          </Card>
         </Grid>
       </Grid>
     </Container>
