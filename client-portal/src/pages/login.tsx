@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import GoogleButton from 'react-google-button';
 import { Form, useForm } from 'react-hook-form';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,7 +14,12 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 
 import { firebaseAuth } from '../config/firebase';
@@ -92,6 +98,24 @@ export default function Login() {
               required: true,
             })}
           />
+
+          <Box sx={{ marginTop: '12px' }}>
+            <GoogleButton
+              onClick={() => {
+                const googleProvider = new GoogleAuthProvider();
+                signInWithPopup(firebaseAuth, googleProvider)
+                  .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    router.push('/');
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                  });
+              }}
+            />
+          </Box>
+
           <Button
             disabled={!formState.isValid}
             type="submit"

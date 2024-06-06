@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import GoogleButton from 'react-google-button';
 import { Form, useForm } from 'react-hook-form';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,7 +14,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithPopup,
+  updateProfile,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 
 import { firebaseAuth } from '../config/firebase';
@@ -124,6 +131,24 @@ export default function Signup() {
               />
             </Grid>
           </Grid>
+
+          <Box sx={{ marginTop: '12px' }}>
+            <GoogleButton
+              onClick={() => {
+                const googleProvider = new GoogleAuthProvider();
+                signInWithPopup(firebaseAuth, googleProvider)
+                  .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    router.push('/');
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                  });
+              }}
+            />
+          </Box>
+
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
             Sign Up
           </Button>
