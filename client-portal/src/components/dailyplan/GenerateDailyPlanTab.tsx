@@ -250,7 +250,7 @@ export const GenerateDailyPlanTab = (props: GenerateDailyPlanTabProps) => {
               }}
             >
               {clientUser?.subscription === 'FREE' && <LockIcon />}
-              Generate Menu
+              Generate Daily Plan
             </Button>
           </Box>
         </>

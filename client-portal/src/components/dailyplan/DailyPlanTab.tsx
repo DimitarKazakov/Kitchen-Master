@@ -96,9 +96,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             sx={{ flexWrap: 'wrap', width: '100%' }}
           >
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Monday</Typography>
+              <Typography sx={{ color: 'black' }}>Monday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Monday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
 
@@ -118,9 +120,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Tuesday</Typography>
+              <Typography sx={{ color: 'black' }}>Tuesday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Tuesday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
 
@@ -140,9 +144,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Wednesday</Typography>
+              <Typography sx={{ color: 'black' }}>Wednesday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Wednesday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
             {currentDailyPlans
@@ -161,9 +167,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Thursday</Typography>
+              <Typography sx={{ color: 'black' }}>Thursday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Thursday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
             {currentDailyPlans
@@ -182,9 +190,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Friday</Typography>
+              <Typography sx={{ color: 'black' }}>Friday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Friday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
             {currentDailyPlans
@@ -203,9 +213,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Saturday</Typography>
+              <Typography sx={{ color: 'black' }}>Saturday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Saturday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
             {currentDailyPlans
@@ -224,9 +236,11 @@ export const DailyPlanTab = (props: DailyPlanTabProps) => {
             <Divider />
 
             <Box display="flex" gap="20px" alignItems="center">
-              <Typography>Sunday</Typography>
+              <Typography sx={{ color: 'black' }}>Sunday</Typography>
               {currentDailyPlans.filter((x) => x.day === 'Sunday').length === 0 && (
-                <Typography variant="subtitle2">No data for this day</Typography>
+                <Typography sx={{ color: 'black' }} variant="subtitle2">
+                  No data for this day
+                </Typography>
               )}
             </Box>
             {currentDailyPlans

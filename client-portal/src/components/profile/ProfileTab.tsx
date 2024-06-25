@@ -54,14 +54,19 @@ export const ProfileTab = (props: ProfileTabProps) => {
                 </IconButton>
               }
             >
-              <ListItemText primary="Username" secondary={clientUser?.username} />
+              <ListItemText
+                sx={{ color: 'black' }}
+                primary="Username"
+                secondary={clientUser?.username}
+              />
             </ListItem>
 
             <ListItem>
-              <ListItemText primary="Email" secondary={clientUser?.email} />
+              <ListItemText sx={{ color: 'black' }} primary="Email" secondary={clientUser?.email} />
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 clientUser?.subscription === 'FREE' ? (
                   <IconButton
@@ -79,6 +84,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
@@ -93,6 +99,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
@@ -107,6 +114,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
@@ -121,6 +129,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
@@ -135,6 +144,7 @@ export const ProfileTab = (props: ProfileTabProps) => {
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
@@ -145,10 +155,15 @@ export const ProfileTab = (props: ProfileTabProps) => {
                 </IconButton>
               }
             >
-              <ListItemText primary="Fats" secondary={`${clientUser?.fats}g`} />
+              <ListItemText
+                sx={{ color: 'black' }}
+                primary="Fats"
+                secondary={`${clientUser?.fats}g`}
+              />
             </ListItem>
 
             <ListItem
+              sx={{ color: 'black' }}
               secondaryAction={
                 <IconButton
                   onClick={() => {
