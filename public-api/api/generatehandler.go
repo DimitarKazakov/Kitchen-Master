@@ -12,7 +12,9 @@ import (
 )
 
 var (
-	DEFAULT_IMAGE = "https://tracksideflex.cdnflexcatering.com/themes/frontend/default/images/img-placeholder.png"
+	DEFAULT_IMAGE        = "https://tracksideflex.cdnflexcatering.com/themes/frontend/default/images/img-placeholder.png"
+	CHATGPT_MODEL_4o     = "gpt-4o"
+	CHATGPT_MODEL_3turbo = "gpt-3.5-turbo"
 )
 
 type generateHandler struct {
@@ -237,7 +239,7 @@ func (h *generateHandler) handleGenerateRecipe(request *http.Request, body gener
 	}
 
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -322,7 +324,7 @@ func (h *generateHandler) handleGenerateDailyIntake(body generateIntakeRequest) 
 
 	// NOTE: here we use few shot learning to fine tune the diets we want to give to users
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -455,7 +457,7 @@ func (h *generateHandler) handleGenerateDailyPlan(request *http.Request, body ge
 	}
 
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -593,7 +595,7 @@ func (h *generateHandler) handleGenerateMenu(request *http.Request, body generat
 	}
 
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -703,7 +705,7 @@ func (h *generateHandler) translateToEnglish(text string) (*string, error) {
 	openAIRepo := repository.NewOpenAIRepository(h.Config.OpenAISecretKey, h.Config.OpenAIChatURL, h.Config.OpenAIImageURL)
 
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -774,7 +776,7 @@ func (h *generateHandler) handleGenerateCustomRecipe(request *http.Request, body
 
 	prompt := "Give me a recipe in JSON format {\"name\": string, \"description\": string, \"preparationTime\": string, \"cookingTime\": string, \"allTime\": string, \"portions\": string, \"ingredients\": string[], \"instructions\": string[]}. Translate the values in Bulgarian. The instructions for the recipe are those: " + *translatedInput
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
@@ -841,7 +843,7 @@ func (h *generateHandler) handleGenerateCustomMenu(request *http.Request, body g
 
 	prompt := "Give me a menu with recipes in JSON format {\"menu\": {\"name\": string, \"description\": string, \"preparationTime\": string, \"cookingTime\": string, \"allTime\": string, \"portions\": string, \"ingredients\": string[], \"instructions\": string[]}[]}. Translate the values in Bulgarian. The instructions for the menu are those: " + *translatedInput
 	chatRequest := entity.ChatCompletionRequest{
-		Model: "gpt-3.5-turbo",
+		Model: CHATGPT_MODEL_4o,
 		ResponseFormat: entity.ChatCompletionResponseFormat{
 			Type: "json_object",
 		},
